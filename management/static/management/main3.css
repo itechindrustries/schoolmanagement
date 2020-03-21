@@ -252,8 +252,8 @@ left: 50px;}
   box-shadow: 0 4px 18px 0px rgba(0, 0, 0, 0.12), 0 7px 10px -5px rgba(0, 0, 0, 0.15);
 }
 .dark-edition .titleb01{color: #d1d1d1;}
-.media{display: none;}
+.media101{display: none;}
 @media (max-width:1000px){
   header,menu,#notibox,main{display: none;}
-  .media{display: block;}
+  .media101{display: block;}
 }
