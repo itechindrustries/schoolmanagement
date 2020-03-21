@@ -146,22 +146,21 @@ def profile(request):
 
 @login_required
 def change_password(request):
-    di={'form': form,'title':'Password Change'}
+    di={'title':'Password Change'}
     di['noti_b_object'] = Notification.objects.all().order_by('-timestamp')
-    class_t_o = Class.objects.filter(class_teacher= request.user).first()
-    if not class_t_o:
-        di['jt'] = 0
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)
         if form.is_valid():
             user = form.save()
             update_session_auth_hash(request, user)  # Important!
             messages.success(request, 'Your password was successfully updated!')
-            return redirect('/profile')
+            return redirect('profile')
         else:
-            messages.error(request, 'Please correct the error below.')
+            messages.error(request, 'You Entered a Wrong Password')
+            return redirect('profile')
     else:
         form = PasswordChangeForm(request.user)
+        di['form']=form
     return render(request, 'change-password.html', di)
 
 
