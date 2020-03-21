@@ -1,0 +1,213 @@
+{% extends "management/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+  <div class="card-deck mb-3 text-center">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Add Attendance</h4>
+      </div>
+      <div class="card-body">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                {{ form3|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-info" type="submit">Add</button>
+            </div>
+        </form>
+      </div>
+    </div>
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">update Attendance</h4>
+      </div>
+      <div class="card-body">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                {{ form1|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-info" type="submit">Update</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="card-deck mb-3 text-center">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Attendance on Basis Of admission no:</h4>
+      </div>
+      <div class="card-body">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-info" type="submit">Search</button>
+            </div>
+        </form>
+      </div>
+    </div>
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Attendance on Basis Of Date</h4>
+      </div>
+      <div class="card-body">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                {{ form2|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-info" type="submit">Search</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% if stat_at %}
+<div class="container">
+  <div class="content-section">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title text-primary">Attendance Details</h4>
+      </div>
+      <div class="card-body table-responsive">
+        <table class="table table-hover">
+          <thead class="text-dark"><strong>
+            <tr>
+              {% for imn in stat_at %}
+            <th>{{imn}}</th>
+            {% endfor %}
+          </tr></strong></thead>
+          <tbody>
+            <tr>
+              {% for ill in stat_at.values %}
+              <td>{{ill}}</td>
+              {% endfor %}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% elif tsat_obj %}
+<div class="container">
+  <div class="content-section">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title text-primary">Student Attendance Record</h4>
+        <p class="card-category text-danger">Total: {{tsat_obj_co}}</p>
+      </div>
+      <div class="card-body table-responsive">
+        <table class="table table-hover">
+          <thead class="text-dark"><strong>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Date</th>
+              <th>Status</th>
+            </tr></strong></thead>
+          <tbody>
+            {% for i in tsat_obj %}
+            <tr>
+              <td>#</td>
+              <td>{{i.student_id.first_name}} {{i.student_id.last_name}}</td>
+              <td>{{i.date}}</td>
+              <td>{{i.status}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% elif cl_obj %}
+<div class="container">
+  <div class="content-section">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title text-primary">Student Details</h4>
+      </div>
+      <div class="card-body table-responsive">
+        <table class="table table-hover">
+          <thead class="text-dark"><strong>
+            <tr><th>ADM_NO</th>
+            <th>Name</th>
+            <th>Ph NO</th>
+            <th>Email</th>
+            <th>Join</th>
+            <th>Addhar</th>
+            <th>Father</th>
+            <th>Mother</th>
+            <th>Sex</th>
+            <th>Birth</th>
+            <th>Address</th>
+            <th>Class</th>
+            <th>Roll</th>
+          </tr></strong></thead>
+          <tbody>
+            {% for i in cl_obj %}
+            <tr>
+              <td>{{i.adm_no}}</td>
+              <td>{{i.first_name}} {{i.last_name}}</td>
+              <td>{{i.phone_no}}</td>
+              <td>{{i.email}}</td>
+              <td>{{i.date_join}}</td>
+              <td>{{i.addhar_no}}</td>
+              <td>{{i.fathers_name}}</td>
+              <td>{{i.mothers_name}}</td>
+              <td>{{i.gender}}</td>
+              <td>{{i.date_of_birth}}</td>
+              <td>{{i.addrress}}</td>
+              <td>{{i.class_id}}</td>
+              <td>{{i.roll_no}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+<canvas id="labelChart"></canvas>
+
+<script>
+  $(".nav").find($('li')[2]).addClass("active");
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+<script>
+var ctxP = document.getElementById("labelChart").getContext('2d');
+data = {
+  datasets: [{
+      data: [{{present}}, {{absent}}],
+      backgroundColor: ["#F7464A", "#46BFBD"],
+      hoverBackgroundColor: ["#FF5A5E", '#5AD3D1']
+  }],
+
+  // These labels appear in the legend and in the tooltips when hovering different arcs
+  labels: [
+      'Present',
+      'Absent'
+  ]
+};
+var myPieChart = new Chart(ctxP, {
+  type: 'pie',
+  data: data,
+  options: {
+    responsive: true,
+  }
+});
+</script>
+{% endblock content %}

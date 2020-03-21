@@ -1,0 +1,73 @@
+{% extends "management/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+  <div class="content-section">
+      <form method="POST">
+          {% csrf_token %}
+          <fieldset class="form-group">
+              <legend class="border-bottom mb-4">ADD Notification</legend>
+              {{ form|crispy }}
+          </fieldset>
+          <div class="form-group">
+              <button class="btn btn-outline-info" type="submit">Add</button>
+          </div>
+      </form>
+  </div>
+</div>
+<div class="col-md-4">
+  <div class="content-section">
+    <form id="formsub" method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Delete Notification</legend>
+              <div id="div_id_text" class="form-group"> <label for="id_text" class=" requiredField">
+              ID<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="text" maxlength="200" class="textinput textInput form-control" required="" id="numit"> </div> </div>
+
+        </fieldset>
+        <div class="form-group">
+            <button id="formsubbtn" type="submit" class="btn btn-outline-info">Delete</button>
+        </div>
+    </form>
+    <script>
+        $('#formsubbtn').click(function(){
+           $('#formsub').attr('action', $('#numit').val()+'/delete/');
+        });
+    </script>
+  </div>
+</div>
+</div>
+</div>
+<div class="container">
+  <div class="content-section">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title text-primary">Notifications</h4>
+      </div>
+      <div class="card-body table-responsive">
+        <table class="table table-hover">
+          <thead class="text-dark"><strong>
+            <tr>
+              <th>#id</th>
+              <th>Creator</th>
+              <th>Message</th>
+              <th>Created On</th>
+          </tr></strong></thead>
+          <tbody>
+            {% for i in noti_object %}
+            <tr>
+              <td>{{i.id}}</td>
+              <td>{{i.user.first_name}} {{i.user.last_name}}</td>
+              <td>{{i.text}}</td>
+              <td>{{i.timestamp}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

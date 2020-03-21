@@ -1,0 +1,128 @@
+{% extends "management/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% if addm %}
+<div class="col-md-8">
+  <div class="content-section">
+      <form method="POST">
+          {% csrf_token %}
+          <fieldset class="form-group">
+              <legend class="border-bottom mb-4">Update/Add Marks</legend>
+              {{ form|crispy }}
+          </fieldset>
+          <div class="form-group">
+              <button class="btn btn-outline-info" type="submit">Update</button>
+          </div>
+      </form>
+  </div>
+</div>
+{% else %}
+<div class="container">
+  <div class="card-deck mb-3 text-center">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Add Marks</h4>
+      </div>
+      <div class="card-body">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-info" type="submit">Add</button>
+            </div>
+        </form>
+      </div>
+    </div>
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Update Marks</h4>
+      </div>
+      <div class="card-body">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                {{ form1|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-info" type="submit">Update</button>
+            </div>
+        </form>
+      </div>
+    </div>
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Search Marks On Basis Of ADM NO</h4>
+      </div>
+      <div class="card-body">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                {{ form2|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-info" type="submit">Search</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-header card-header-warning card-header-icon">
+        <div class="card-icon">
+          <img class="imgnavb" src="/static/class.png" alt="classes">
+        </div>
+        <p class="card-category">Generate Report Card</p>
+        <a href="/report-card"><button class="btn btn-danger" type="submit">Create</button></a>
+      </div>
+      <div class="card-footer">
+        <div class="stats">
+          <span class="text-success">Click to Generate Report Cards.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% if mark_object %}
+<div class="container">
+  <div class="content-section">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title text-primary">Attendance Details</h4>
+      </div>
+      <div class="card-body table-responsive">
+        <table class="table table-hover">
+          <thead class="text-dark"><strong>
+            <tr>
+              <th>#id</th>
+              <th>Name</th>
+              <th>Subject</th>
+              <th>Marks</th>
+              <th>Full Marks</th>
+          </tr></strong></thead>
+          <tbody>
+            {% for i in mark_object %}
+            <tr>
+              <td>{{i.id}}</td>
+              <td>{{i.student_id.first_name}} {{i.student_id.last_name}}</td>
+              <td>{{i.subject_id}}</td>
+              <td>{{i.marks}}</td>
+              <td>{{i.full_marks}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endif %}
+<script>
+  $(".nav").find($('li')[3]).addClass("active");
+</script>
+{% endblock content %}

@@ -1,0 +1,36 @@
+{% extends "management/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+  <div class="content-section">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title text-primary">All Classes Persent In School</h4>
+        <p class="card-category">And details about The Class</p>
+      </div>
+      <div class="card-body table-responsive">
+        <table class="table table-hover">
+          <thead class="text-dark"><strong>
+            <tr><th>#</th>
+            <th>Class</th>
+            <th>Class Teacher</th>
+            <th>Block/Building</th>
+          </tr></strong></thead>
+          <tbody>
+            {% for i in di.values %}
+            <tr>
+              {% for j in i.values %}
+              <td>{{j}}</td>
+              {% endfor %}
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(".nav").find($('li')[1]).addClass("active");
+</script>
+{% endblock content %}

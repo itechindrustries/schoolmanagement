@@ -1,0 +1,30 @@
+{% extends "management/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="col-md-8">
+  <div class="content-section">
+    <div class="text-primary">
+      Exam Name : Exam Id
+      <div>
+        {% for i in exam_li %}
+        <span class="text-success">{{i.exam_name}}: </span><span class="asdf">{{i.id}}</span><br>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-md-8">
+  <div class="content-section">
+      <form method="POST">
+          {% csrf_token %}
+          <fieldset class="form-group">
+              <legend class="border-bottom mb-4">Report Card Settings</legend>
+              {{ form|crispy }}
+          </fieldset>
+          <div class="form-group">
+              <button class="btn btn-outline-info" type="submit">Generate</button>
+          </div>
+      </form>
+  </div>
+</div>
+{% endblock content %}

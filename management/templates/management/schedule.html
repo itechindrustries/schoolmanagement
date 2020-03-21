@@ -1,0 +1,69 @@
+{% extends "management/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% if schedule %}
+<div class="container">
+  <div class="content-section">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title text-primary">Class Schedule</h4>
+      </div>
+      <div class="card-body table-responsive">
+        <table class="table table-hover">
+          <thead class="text-dark"><strong>
+            <tr>
+              <th>#DAY</th>
+              <th>P-Sub</th>
+              <th>P-Sub</th>
+              <th>P-Sub</th>
+              <th>P-Sub</th>
+              <th>P-Sub</th>
+              <th>P-Sub</th>
+              <th>P-Sub</th>
+              <th>P-Sub</th>
+          </tr></strong></thead>
+          <tbody>
+            <tr>
+              <td>Monday</td>
+              {% for i in schedule_m %}
+              <td>{{i.Period}}-{{i.subject_id.subject_name}}</td>
+              {% endfor %}
+            </tr>
+            <tr>
+              <td>Tuesday</td>
+              {% for i in schedule_t %}
+              <td>{{i.Period}}-{{i.subject_id.subject_name}}</td>
+              {% endfor %}
+            </tr>
+            <tr>
+              <td>Wednesday</td>
+              {% for i in schedule_w %}
+              <td>{{i.Period}}-{{i.subject_id.subject_name}}</td>
+              {% endfor %}
+            </tr>
+            <tr>
+              <td>Thursday</td>
+              {% for i in schedule_th %}
+              <td>{{i.Period}}-{{i.subject_id.subject_name}}</td>
+              {% endfor %}
+            </tr>
+            <tr>
+              <td>Friday</td>
+              {% for i in schedule_f %}
+              <td>{{i.Period}}-{{i.subject_id.subject_name}}</td>
+              {% endfor %}
+            </tr>
+            <tr>
+              <td>Saturday</td>
+              {% for i in schedule_s %}
+              <td>{{i.Period}}-{{i.subject_id.subject_name}}</td>
+              {% endfor %}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endblock content %}

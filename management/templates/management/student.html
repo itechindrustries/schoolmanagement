@@ -1,0 +1,248 @@
+{% extends "management/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% if stuli %}
+<div class="container">
+  <div class="card-deck mb-3 text-center">
+    <div class="card mb-4 shadow-sm">
+  <p class="card-category">Student List</p>
+  <h5 class="text-primary">
+      {{stuli}}
+  </h5></div></div>
+</div>
+{% endif %}
+<div class="container">
+  <div class="card-deck mb-3 text-center">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Search on Basis Of admission no:</h4>
+      </div>
+      <div class="card-body">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-info" type="submit">Search</button>
+            </div>
+        </form>
+      </div>
+    </div>
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Search on Basis Of Phone no:</h4>
+      </div>
+      <div class="card-body">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                {{ form1|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-info" type="submit">Search</button>
+            </div>
+        </form>
+      </div>
+    </div>
+    {% if user.is_superuser %}
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Search on Basis Of Class:</h4>
+      </div>
+      <div class="card-body">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                {{ form2|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-info" type="submit">Search</button>
+            </div>
+        </form>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% if adm_obj %}
+<div class="container">
+  <div class="content-section">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title text-primary">Student Details</h4>
+      </div>
+      <div class="card-body table-responsive">
+        <table class="table table-hover">
+          <thead class="text-dark"><strong>
+            <tr><th>ADM_NO</th>
+            <th>Name</th>
+            <th>Ph NO</th>
+            <th>Email</th>
+            <th>Join</th>
+            <th>Addhar</th>
+            <th>Father</th>
+            <th>Mother</th>
+            <th>Sex</th>
+            <th>Birth</th>
+            <th>Address</th>
+            <th>Class</th>
+            <th>Roll</th>
+          </tr></strong></thead>
+          <tbody>
+            {% for i in adm_obj %}
+            <tr>
+              <td>{{i.adm_no}}</td>
+              <td>{{i.first_name}} {{i.last_name}}</td>
+              <td>{{i.phone_no}}</td>
+              <td>{{i.email}}</td>
+              <td>{{i.date_join}}</td>
+              <td>{{i.addhar_no}}</td>
+              <td>{{i.fathers_name}}</td>
+              <td>{{i.mothers_name}}</td>
+              <td>{{i.gender}}</td>
+              <td>{{i.date_of_birth}}</td>
+              <td>{{i.addrress}}</td>
+              <td>{{i.class_id}}</td>
+              <td>{{i.roll_no}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% elif ph_obj %}
+<div class="container">
+  <div class="content-section">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title text-primary">Student Details</h4>
+      </div>
+      <div class="card-body table-responsive">
+        <table class="table table-hover">
+          <thead class="text-dark"><strong>
+            <tr><th>ADM_NO</th>
+            <th>Name</th>
+            <th>Ph NO</th>
+            <th>Email</th>
+            <th>Join</th>
+            <th>Addhar</th>
+            <th>Father</th>
+            <th>Mother</th>
+            <th>Sex</th>
+            <th>Birth</th>
+            <th>Address</th>
+            <th>Class</th>
+            <th>Roll</th>
+          </tr></strong></thead>
+          <tbody>
+            {% for i in ph_obj %}
+            <tr>
+              <td>{{i.adm_no}}</td>
+              <td>{{i.first_name}} {{i.last_name}}</td>
+              <td>{{i.phone_no}}</td>
+              <td>{{i.email}}</td>
+              <td>{{i.date_join}}</td>
+              <td>{{i.addhar_no}}</td>
+              <td>{{i.fathers_name}}</td>
+              <td>{{i.mothers_name}}</td>
+              <td>{{i.gender}}</td>
+              <td>{{i.date_of_birth}}</td>
+              <td>{{i.addrress}}</td>
+              <td>{{i.class_id}}</td>
+              <td>{{i.roll_no}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% elif cl_obj %}
+<div class="container">
+  <div class="content-section">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title text-primary">Student Details</h4>
+      </div>
+      <div class="card-body table-responsive">
+        <table class="table table-hover">
+          <thead class="text-dark"><strong>
+            <tr><th>ADM_NO</th>
+            <th>Name</th>
+            <th>Ph NO</th>
+            <th>Email</th>
+            <th>Join</th>
+            <th>Addhar</th>
+            <th>Father</th>
+            <th>Mother</th>
+            <th>Sex</th>
+            <th>Birth</th>
+            <th>Address</th>
+            <th>Class</th>
+            <th>Roll</th>
+          </tr></strong></thead>
+          <tbody>
+            {% for i in cl_obj %}
+            <tr>
+              <td>{{i.adm_no}}</td>
+              <td>{{i.first_name}} {{i.last_name}}</td>
+              <td>{{i.phone_no}}</td>
+              <td>{{i.email}}</td>
+              <td>{{i.date_join}}</td>
+              <td>{{i.addhar_no}}</td>
+              <td>{{i.fathers_name}}</td>
+              <td>{{i.mothers_name}}</td>
+              <td>{{i.gender}}</td>
+              <td>{{i.date_of_birth}}</td>
+              <td>{{i.addrress}}</td>
+              <td>{{i.class_id}}</td>
+              <td>{{i.roll_no}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+<canvas id="labelChart"></canvas>
+{% if user.is_superuser%}
+<script>
+  $(".nav").find($('li')[2]).addClass("active");
+</script>
+{% else %}
+<script>
+  $(".nav").find($('li')[1]).addClass("active");
+</script>
+{% endif %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+<script>
+var ctxP = document.getElementById("labelChart").getContext('2d');
+data = {
+  datasets: [{
+      data: [{{male}}, {{female}}, {{other}}],
+      backgroundColor: ["#F7464A", "#46BFBD", "#EDEE0D"],
+      hoverBackgroundColor: ["#FF5A5E", '#5AD3D1', "#EDEE55"]
+  }],
+
+  // These labels appear in the legend and in the tooltips when hovering different arcs
+  labels: [
+      'Male',
+      'Female',
+      'Others'
+  ]
+};
+var myPieChart = new Chart(ctxP, {
+  type: 'pie',
+  data: data,
+  options: {
+    responsive: true,
+  }
+});
+</script>
+{% endblock content %}

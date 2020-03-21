@@ -1,0 +1,273 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/material-dashboard.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{% static '/main3.css' %}">
+    <script src="{% static 'jquery.min.js' %}"></script>
+    <style>
+    .asdf{color: black;}
+    .dark-edition .asdf{color: #fff;}
+      #notibox{background: #e7e7e7eb;display: none;
+    position: absolute;
+    z-index: 2000;
+    right: 50px;
+    top: 71px;}
+    .dark-edition #notibox{background: #252f47;}
+    .dark-edition h6{color: #c6c6c6d4;}
+    /* width */
+    ::-webkit-scrollbar {
+      width: 9px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 10px
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+    </style>
+  </head>
+  <body class="{{ user.settings.theme }}">
+    <div class="media" style="">
+      <h3>Open IN Desktop NOT IN MOBILES OR TABS</h3>
+    </div>
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4 headtitle" style="color:#007bff;" href="{% url 'home' %}">Management</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link titleb01" href="#">{{title}}</a>
+            </div>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav profilemenuz01">
+                <div id="noti-btn" class="nav-item nav-link dropdown" style="cursor: pointer;"><img data-toggle="dropdown" class="imgnavb" src="{% static '/notification.png' %}" title="Notification" alt="Notification">
+                  {% if noti_b_object %}
+                    <span class="notification">{{noti_b_object.count}}</span>
+                  {% endif %}
+                </div>
+                <a class="nav-item nav-link" href="{% url 'logout' %}"><img class="imgnavb" src="{% static '/signout.png' %}" title="signout" alt="signout"></a>
+                <a class="nav-item nav-link" href="{% url 'profile' %}">
+                  <img class="imgnavb" src="{% static '/profile.jpeg' %}" title="Profile" alt="Profile Pic">
+                </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <menu>
+    <div class="sidebar" id="sidebar" data-color="azure" data-background-color="black" data-image="{% static '/sidebar-2.jpg' %}">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+    <div class="logo">
+      <img class="imgnavb" onclick="myFunction(this)" src="{% static '/off (1).png' %}" title="Notification" alt="Notification">
+      <span id="span">&nbsp;&nbsp;&nbsp;&nbsp;Management</span>
+        </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link crunchlink" href="/">
+              <img class="imgnavb" src="{% static '/dashboard.png' %}" title="Notification" alt="Notification">
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;Dashboard</span>
+            </a>
+          </li>
+          {% if user.is_superuser %}
+          <li class="nav-item ">
+            <a class="nav-link crunchlink" href="/classes">
+              <img class="imgnavb" src="{% static '/class.png' %}" title="Notification" alt="Notification">
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;Classes</span>
+            </a>
+          </li>
+          {% endif %}
+          {% if jt != 0 %}
+          <li class="nav-item ">
+            <a class="nav-link crunchlink" href="/student">
+              <img class="imgnavb" src="{% static '/student.png' %}" title="Notification" alt="Notification">
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;Student</span>
+            </a>
+          </li>
+          {% endif %}
+          {% if not user.is_superuser %}{% if jt != 0 %}
+          <li class="nav-item ">
+            <a class="nav-link crunchlink" href="/attendance">
+              <img class="imgnavb" src="{% static '/attandance.png' %}" title="Notification" alt="Notification">
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;Attendance</span>
+            </a>
+          </li>
+          {% endif %}{% endif %}
+          {% if not user.is_superuser %}{% if jt != 0 %}
+          <li class="nav-item ">
+            <a class="nav-link crunchlink" href="/examarks">
+              <img class="imgnavb" src="{% static '/exam.png' %}" title="Notification" alt="Notification">
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;Exam Marks</span>
+            </a>
+          </li>
+          {% endif %}{% endif %}
+          {% if not user.is_superuser %}{% if jt != 0 %}
+          <li class="nav-item ">
+            <a class="nav-link crunchlink" href="/schedule">
+              <img class="imgnavb" src="{% static '/schedule.png' %}" title="Notification" alt="Notification">
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;Class Schedule</span>
+            </a>
+          </li>
+          {% endif %}{% endif %}
+          {% if user.is_superuser %}
+          <li class="nav-item ">
+            <a class="nav-link crunchlink" href="/pushnotification">
+              <img class="imgnavb" src="{% static '/pushnotification.png' %}" title="Notification" alt="Notification">
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;Push Notification</span>
+            </a>
+          </li>
+          {% endif %}
+          <!-- <li class="nav-item active-pro ">
+                <a class="nav-link" href="./upgrade.html">
+                    <i class="material-icons">unarchive</i>
+                    <p>Upgrade to PRO</p>
+                </a>
+            </li> -->
+        </ul>
+      </div>
+    </div>
+    </menu>
+    <div id="notibox" style="outline: none;box-sizing: border-box;width: 480px;max-height: 642px;overflow-y: auto;;overflow-x: hidden">
+      <div class="site-header" style="height: 48px;border-bottom: 1px solid #949494;padding:10px">
+        <h5>Notification</h5>
+      </div>
+      {% if noti_b_object %}
+        {% for i in noti_b_object %}
+        <div class="site-header" style="min-height: 80px;border-bottom: 1px solid #959595;padding-top:10px;">
+          <h6 style="padding:10px;padding-left:20px;">{{i.text}}</h6>
+          <div class="card-footer">
+            <div class="stats">
+              <span class="text-success">By:{{i.user.first_name}} {{i.user.last_name}}</span>
+              <span class="text-primary float-right">{{i.timestamp}}</span>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+          {% if messages %}
+          <div class="row">
+            {% for message in messages %}
+            <div id="toasthide" aria-live="polite" aria-atomic="true" style="position: sticky;margin-left: 20px;min-height: 200px;width: 35vh;">
+              <!-- Position it -->
+              <div style="position: absolute;top: 0;right: 0;background: aliceblue;border-radius: 8px;overflow: hidden;">
+
+                <!-- Then put toasts within -->
+                <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                  <div class="toast-header" style="background: antiquewhite;padding: 7px;">
+                    <img src="..." class="rounded mr-2" alt="...">
+                    <strong class="mr-auto">From System</strong>
+                    <small class="text-muted">just now</small>
+                    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  {% if message.tags != 'error' %}
+                  <div class="toast-body text-{{message.tags}}" style="padding: 7px;">
+                  {% else %}
+                  <div class="toast-body text-danger" style="padding: 7px;">
+                  {% endif %}
+                    {{message}}
+                  </div>
+                </div>
+              </div>
+              </div>
+            {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+        {% block content %}{% endblock %}
+        <!--<div class="col-md-4">
+          <div class="content-section">
+            <h3>Our Sidebar</h3>
+            <p class='text-muted'>You can put any information here you'd like.
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-light">Latest Posts</li>
+                <li class="list-group-item list-group-item-light">Announcements</li>
+                <li class="list-group-item list-group-item-light">Calendars</li>
+                <li class="list-group-item list-group-item-light">etc</li>
+              </ul>
+            </p>
+          </div>
+        </div>-->
+      </div>
+      <footer class="footer">
+        <div class="container-fluid">
+          <div class="copyright float-right" id="date">© 2020
+            , made with <span class="text-danger">&#10084;</span> by
+            <a href="https://itechindrustries.com" target="_blank">Itech Indrustries</a> for a better web.
+          </div>
+        </div>
+      </footer>
+    </main>
+    {% csrf_token %}
+    <script>
+      $('#noti-btn').click(function(){
+        if($('#notibox').css('display') == 'none'){
+          $('#notibox').show('slow');
+        } else {
+          $('#notibox').hide('slow');
+        }
+      });
+      function myFunction(el) {
+        if(document.getElementById("sidebar").offsetWidth === 260){
+          document.getElementById("sidebar").style.width = "85px";
+          document.getElementById("span").style.display="none";
+          el.src="/static/off (1).png";
+        }
+        else{
+          document.getElementById("sidebar").style.width = "260px";
+          document.getElementById("span").style.display="block";
+          el.src="/static/off (2).png";
+        }
+      }
+      $( ".close" ).click(function() {
+        $("#toasthide").remove()
+      });
+      /*function sendajax(){
+        $.ajax({
+               type:'POST',
+               url:'sendajax/',
+               data:{
+                  value: 'change-theme',
+                  csrfmiddlewaretoken:jQuery("[name=csrfmiddlewaretoken]").val()
+               },
+               success: function(data){
+                   alert(data); // this is currently returning FALSE
+               }
+           })
+      }*/
+      $(document).ready(function() {
+        $('.fixed-plugin a').click(function(event) {
+          // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
+
+        });
+      });
+    </script>
+  </body>
+</html>

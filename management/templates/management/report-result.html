@@ -1,0 +1,195 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{stu_obj.first_name}} {{stu_obj.last_name}}</title>
+    <script src="{% static 'jquery.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
+    <style>
+        *{padding: 0;margin: 0;font-family: sans-serif;}
+        @page { size: auto;  margin: 0mm; }
+        #cbseimage{
+            position: absolute;
+            top: 40px;
+            left: 40px;
+        }
+        #davimage{
+            position: absolute;
+            top: 1px;
+            left:1px;
+        }
+        #cbseimage img{width: 200px;height: 160px;}
+        #schoolname{font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+        }
+        #scdetail{
+            position: absolute;
+            top: 90px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 13px;
+            font-weight: 400;
+        }
+        #scdetail div{font-size: 18px;}
+        #studetail1{
+            font-size: 15px;
+            font-weight: 500;
+            position: absolute;
+            top: 250px;
+            left: 10%;
+            transform: translateX(-10%);
+        }
+        #studetail2{
+            font-size: 15px;
+            font-weight: 500;
+            position: absolute;
+            top: 250px;
+            right: 10%;
+            transform: translateX(-10%);
+        }
+        #marksbox{
+            width: 80%;
+            height: auto;
+            position: absolute;
+            top: 350px;
+            left: 18%;
+            transform: translateX(-10%);
+            border: 1px solid black;
+        }
+        #marksbox div{text-align: center; display:table-row;overflow: hidden;border-bottom: 1px solid black;}
+        #marksbox div div{text-align: center;height: 100%;font-size: 18px;border-right: 1px solid black;display: table-cell;vertical-align: middle;width: 10%;}
+        #header{background: rgba(241, 154, 23, 0.521);}
+        #re{position: absolute;top: 680px;left: 18%;
+        transform: translateX(-10%);
+        width: 79%;
+        background: antiquewhite;
+        padding: 8px;
+        font-size: large;
+        font-family: sans-serif;}
+    </style>
+</head>
+<body>
+    <div id="davimage"><img style="width:250px" src="{% static 'school.jpg'%}"></div>
+    <div id="schoolname"><B>Example Model School</B></div>
+    <div id="scdetail"><pre>
+        Affiliated to CBSE, Affiliation No. 223366
+            J.M. Sengupta Road, Durgapur-713205
+    Ph. 011-44556655, Email : davmodeldurgapur@gmail.com
+    <div><b>
+        Academic Session: {{session}}
+                        Report Card
+    </b></div>
+    </pre></div>
+    <div id="studetail1"><pre>
+    Student Name: {{stu_obj.first_name}} {{stu_obj.last_name}}
+    Father's Name: {{stu_obj.fathers_name}}
+    Mother's Name: {{stu_obj.mothers_name}}
+    Class / Section: {{stu_obj.class_id.class_name}}
+    </pre></div>
+    <div id="studetail2"><pre>
+    D.O.B - {{stu_obj.date_of_birth}}
+    Height: {{stu_obj.height}}
+    Weight: {{stu_obj.weight}}
+    Roll No: {{stu_obj.roll_no}}
+    </pre></div>
+    <div id="marksbox">
+        <div id="header">
+            <div>Subjects</div>
+            <div>Marks in Practical</div>
+            <div>Full Marks in Practical</div>
+            <div>Marks in Theory</div>
+            <div>Full Marks in Theory</div>
+            <div>Total</div>
+            <div>Grade</div>
+        </div>
+        {% for i in m_di.values %}
+        <div>
+          {% for j in i.values %}
+            <div>{{j}}</div>
+          {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+    <div id="re">
+        <b>Teacher's Remarks:</b> <u style="
+    padding: 2px;
+    overflow: scroll;
+    text-decoration: none;
+    line-height: 28px;
+">{{remarks}}</u>
+    </div>
+    <div id="marksbox" style="top: 800px;
+      width: auto;
+      left: 50%;
+      transform: translateX(-50%);">
+        <div id="header">
+            <div>Grade</div>
+            <div>Marks</div>
+        </div>
+        <div>
+            <div>A+</div>
+            <div>90-100</div>
+        </div>
+        <div>
+            <div>A</div>
+            <div>80-89</div>
+        </div>
+        <div>
+            <div>B+</div>
+            <div>70-79</div>
+        </div>
+        <div>
+            <div>B</div>
+            <div>60-69</div>
+        </div>
+        <div>
+            <div>C</div>
+            <div>50-59</div>
+        </div>
+        <div>
+            <div>D</div>
+            <div>40-49</div>
+        </div>
+        <div>
+            <div>E</div>
+            <div>33-39</div>
+        </div>
+        <div>
+            <div>F</div>
+            <div>Below 33</div>
+        </div>
+    </div>
+    <div id="editor"></div>
+    <button id="cmd" style="transform:translateX(1000%);">generate PDF</button>
+    <script>
+      /*var doc = new jsPDF('p', 'px', 'a4');
+      var specialElementHandlers = {
+          '#editor': function (element, renderer) {
+              return true;
+          }
+      };
+*/
+      $('#cmd').click(function () {
+          /*doc.fromHTML($('html').html(), 15, 15, {
+              'width': 170,
+                  'elementHandlers': specialElementHandlers
+          });
+          doc.save('{{stu_obj.first_name}} {{stu_obj.last_name}}.pdf');*/
+
+          /*doc.addHTML($('body')[0], function () {
+              doc.save('Test.pdf');
+          });*/
+          $(this).hide()
+          window.print()
+            });
+    </script>
+</body>
+</html>

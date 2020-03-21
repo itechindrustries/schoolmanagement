@@ -1,0 +1,210 @@
+{% extends "management/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+  {% if jt != 0 %}
+        <div class="row">
+          <div class="col-xl-4 col-lg-12">
+            <div class="card card-chart">
+              <div class="card-header card-header-success">
+                <div class="ct-chart" id="dailySalesChart"><svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%" height="100%" class="ct-chart-line" style="width: 100%; height: 100%;"><g class="ct-grids"><line x1="40" x2="40" y1="0" y2="119.4339599609375" class="ct-grid ct-horizontal"></line><line x1="90.4629385811942" x2="90.4629385811942" y1="0" y2="119.4339599609375" class="ct-grid ct-horizontal"></line><line x1="140.9258771623884" x2="140.9258771623884" y1="0" y2="119.4339599609375" class="ct-grid ct-horizontal"></line><line x1="191.3888157435826" x2="191.3888157435826" y1="0" y2="119.4339599609375" class="ct-grid ct-horizontal"></line><line x1="241.85175432477678" x2="241.85175432477678" y1="0" y2="119.4339599609375" class="ct-grid ct-horizontal"></line><line x1="292.31469290597096" x2="292.31469290597096" y1="0" y2="119.4339599609375" class="ct-grid ct-horizontal"></line><line x1="342.7776314871652" x2="342.7776314871652" y1="0" y2="119.4339599609375" class="ct-grid ct-horizontal"></line><line y1="119.4339599609375" y2="119.4339599609375" x1="40" x2="393.2405700683594" class="ct-grid ct-vertical"></line><line y1="95.54716796875" y2="95.54716796875" x1="40" x2="393.2405700683594" class="ct-grid ct-vertical"></line><line y1="71.6603759765625" y2="71.6603759765625" x1="40" x2="393.2405700683594" class="ct-grid ct-vertical"></line><line y1="47.773583984374994" y2="47.773583984374994" x1="40" x2="393.2405700683594" class="ct-grid ct-vertical"></line><line y1="23.886791992187497" y2="23.886791992187497" x1="40" x2="393.2405700683594" class="ct-grid ct-vertical"></line><line y1="0" y2="0" x1="40" x2="393.2405700683594" class="ct-grid ct-vertical"></line></g><g><g class="ct-series ct-series-a"><path d="M 40 90.77 C 90.463 78.826 90.463 78.826 90.463 78.826 C 140.926 102.713 140.926 102.713 140.926 102.713 C 191.389 78.826 191.389 78.826 191.389 78.826 C 241.852 64.494 241.852 64.494 241.852 64.494 C 292.315 76.438 292.315 76.438 292.315 76.438 C 342.778 28.664 342.778 28.664 342.778 28.664" class="ct-line"></path><line x1="40" y1="90.7698095703125" x2="40.01" y2="90.7698095703125" class="ct-point" ct:value="12" opacity="1"></line><line x1="90.4629385811942" y1="78.82641357421875" x2="90.4729385811942" y2="78.82641357421875" class="ct-point" ct:value="17" opacity="1"></line><line x1="140.9258771623884" y1="102.71320556640624" x2="140.93587716238838" y2="102.71320556640624" class="ct-point" ct:value="7" opacity="1"></line><line x1="191.3888157435826" y1="78.82641357421875" x2="191.3988157435826" y2="78.82641357421875" class="ct-point" ct:value="17" opacity="1"></line><line x1="241.85175432477678" y1="64.49433837890625" x2="241.86175432477677" y2="64.49433837890625" class="ct-point" ct:value="23" opacity="1"></line><line x1="292.31469290597096" y1="76.43773437499999" x2="292.32469290597095" y2="76.43773437499999" class="ct-point" ct:value="18" opacity="1"></line><line x1="342.7776314871652" y1="28.664150390624997" x2="342.7876314871652" y2="28.664150390624997" class="ct-point" ct:value="38" opacity="1"></line></g></g><g class="ct-labels"><foreignObject style="overflow: visible;" x="40" y="124.4339599609375" width="50.462938581194194" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 50px; height: 20px;">M</span></foreignObject><foreignObject style="overflow: visible;" x="90.4629385811942" y="124.4339599609375" width="50.462938581194194" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 50px; height: 20px;">T</span></foreignObject><foreignObject style="overflow: visible;" x="140.9258771623884" y="124.4339599609375" width="50.46293858119421" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 50px; height: 20px;">W</span></foreignObject><foreignObject style="overflow: visible;" x="191.3888157435826" y="124.4339599609375" width="50.46293858119418" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 50px; height: 20px;">T</span></foreignObject><foreignObject style="overflow: visible;" x="241.85175432477678" y="124.4339599609375" width="50.46293858119418" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 50px; height: 20px;">F</span></foreignObject><foreignObject style="overflow: visible;" x="292.31469290597096" y="124.4339599609375" width="50.46293858119424" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 50px; height: 20px;">S</span></foreignObject><foreignObject style="overflow: visible;" x="342.7776314871652" y="124.4339599609375" width="50.46293858119418" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 50px; height: 20px;">S</span></foreignObject><foreignObject style="overflow: visible;" y="95.54716796875" x="0" height="23.8867919921875" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 24px; width: 30px;">0</span></foreignObject><foreignObject style="overflow: visible;" y="71.6603759765625" x="0" height="23.8867919921875" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 24px; width: 30px;">10</span></foreignObject><foreignObject style="overflow: visible;" y="47.773583984375" x="0" height="23.886791992187504" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 24px; width: 30px;">20</span></foreignObject><foreignObject style="overflow: visible;" y="23.886791992187497" x="0" height="23.886791992187497" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 24px; width: 30px;">30</span></foreignObject><foreignObject style="overflow: visible;" y="0" x="0" height="23.886791992187497" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 24px; width: 30px;">40</span></foreignObject><foreignObject style="overflow: visible;" y="-30" x="0" height="30" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 30px; width: 30px;">50</span></foreignObject></g></svg></div>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">Daily Attendance Stats</h4>
+                <p class="card-category">
+                  {% if att_per > 0 %}
+                    <span class="text-success">&uarr; {{att_per}}% </span> increase in students from yesterday.
+                  {% else %}
+                    <span class="text-danger">&darr; {{att_per}}% </span> increase in students from yesterday.
+                  {% endif %}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-12">
+            <div class="card card-chart">
+              <div class="card-header card-header-warning">
+                <div class="ct-chart" id="websiteViewsChart"><svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%" height="100%" class="ct-chart-bar" style="width: 100%; height: 100%;"><g class="ct-grids"><line y1="119.4339599609375" y2="119.4339599609375" x1="40" x2="388.2405700683594" class="ct-grid ct-vertical"></line><line y1="95.54716796875" y2="95.54716796875" x1="40" x2="388.2405700683594" class="ct-grid ct-vertical"></line><line y1="71.6603759765625" y2="71.6603759765625" x1="40" x2="388.2405700683594" class="ct-grid ct-vertical"></line><line y1="47.773583984374994" y2="47.773583984374994" x1="40" x2="388.2405700683594" class="ct-grid ct-vertical"></line><line y1="23.886791992187497" y2="23.886791992187497" x1="40" x2="388.2405700683594" class="ct-grid ct-vertical"></line><line y1="0" y2="0" x1="40" x2="388.2405700683594" class="ct-grid ct-vertical"></line></g><g><g class="ct-series ct-series-a"><line x1="54.510023752848305" x2="54.510023752848305" y1="119.4339599609375" y2="54.70075366210938" class="ct-bar" ct:value="542" opacity="1"></line><line x1="83.53007125854492" x2="83.53007125854492" y1="119.4339599609375" y2="66.52471569824219" class="ct-bar" ct:value="443" opacity="1"></line><line x1="112.55011876424153" x2="112.55011876424153" y1="119.4339599609375" y2="81.2150927734375" class="ct-bar" ct:value="320" opacity="1"></line><line x1="141.57016626993814" x2="141.57016626993814" y1="119.4339599609375" y2="26.275471191406254" class="ct-bar" ct:value="780" opacity="1"></line><line x1="170.59021377563474" x2="170.59021377563474" y1="119.4339599609375" y2="53.386980102539056" class="ct-bar" ct:value="553" opacity="1"></line><line x1="199.61026128133136" x2="199.61026128133136" y1="119.4339599609375" y2="65.33037609863281" class="ct-bar" ct:value="453" opacity="1"></line><line x1="228.63030878702799" x2="228.63030878702799" y1="119.4339599609375" y2="80.49848901367187" class="ct-bar" ct:value="326" opacity="1"></line><line x1="257.6503562927246" x2="257.6503562927246" y1="119.4339599609375" y2="67.59962133789062" class="ct-bar" ct:value="434" opacity="1"></line><line x1="286.6704037984212" x2="286.6704037984212" y1="119.4339599609375" y2="51.595470703125" class="ct-bar" ct:value="568" opacity="1"></line><line x1="315.69045130411786" x2="315.69045130411786" y1="119.4339599609375" y2="46.57924438476563" class="ct-bar" ct:value="610" opacity="1"></line><line x1="344.71049880981445" x2="344.71049880981445" y1="119.4339599609375" y2="29.141886230468756" class="ct-bar" ct:value="756" opacity="1"></line><line x1="373.73054631551105" x2="373.73054631551105" y1="119.4339599609375" y2="12.54056579589843" class="ct-bar" ct:value="895" opacity="1"></line></g></g><g class="ct-labels"><foreignObject style="overflow: visible;" x="40" y="124.4339599609375" width="29.020047505696613" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 29px; height: 20px;">J</span></foreignObject><foreignObject style="overflow: visible;" x="69.02004750569661" y="124.4339599609375" width="29.020047505696613" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 29px; height: 20px;">F</span></foreignObject><foreignObject style="overflow: visible;" x="98.04009501139322" y="124.4339599609375" width="29.020047505696617" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 29px; height: 20px;">M</span></foreignObject><foreignObject style="overflow: visible;" x="127.06014251708984" y="124.4339599609375" width="29.02004750569661" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 29px; height: 20px;">A</span></foreignObject><foreignObject style="overflow: visible;" x="156.08019002278644" y="124.4339599609375" width="29.02004750569661" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 29px; height: 20px;">M</span></foreignObject><foreignObject style="overflow: visible;" x="185.10023752848306" y="124.4339599609375" width="29.020047505696624" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 29px; height: 20px;">J</span></foreignObject><foreignObject style="overflow: visible;" x="214.1202850341797" y="124.4339599609375" width="29.020047505696596" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 29px; height: 20px;">J</span></foreignObject><foreignObject style="overflow: visible;" x="243.14033253987628" y="124.4339599609375" width="29.020047505696624" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 29px; height: 20px;">A</span></foreignObject><foreignObject style="overflow: visible;" x="272.1603800455729" y="124.4339599609375" width="29.020047505696624" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 29px; height: 20px;">S</span></foreignObject><foreignObject style="overflow: visible;" x="301.18042755126953" y="124.4339599609375" width="29.020047505696596" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 29px; height: 20px;">O</span></foreignObject><foreignObject style="overflow: visible;" x="330.2004750569661" y="124.4339599609375" width="29.020047505696596" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 29px; height: 20px;">N</span></foreignObject><foreignObject style="overflow: visible;" x="359.2205225626627" y="124.4339599609375" width="30" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 30px; height: 20px;">D</span></foreignObject><foreignObject style="overflow: visible;" y="95.54716796875" x="0" height="23.8867919921875" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 24px; width: 30px;">0</span></foreignObject><foreignObject style="overflow: visible;" y="71.6603759765625" x="0" height="23.8867919921875" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 24px; width: 30px;">200</span></foreignObject><foreignObject style="overflow: visible;" y="47.773583984375" x="0" height="23.886791992187504" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 24px; width: 30px;">400</span></foreignObject><foreignObject style="overflow: visible;" y="23.886791992187497" x="0" height="23.886791992187497" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 24px; width: 30px;">600</span></foreignObject><foreignObject style="overflow: visible;" y="0" x="0" height="23.886791992187497" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 24px; width: 30px;">800</span></foreignObject><foreignObject style="overflow: visible;" y="-30" x="0" height="30" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 30px; width: 30px;">1000</span></foreignObject></g></svg></div>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">New addmission</h4>
+                <p class="card-category">{{stu}} Student Joined Today</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-12">
+            <div class="card card-chart">
+              <div class="card-header card-header-danger">
+                <div class="ct-chart" id="completedTasksChart"><svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%" height="100%" class="ct-chart-line" style="width: 100%; height: 100%;"><g class="ct-grids"><line x1="40" x2="40" y1="0" y2="119.4339599609375" class="ct-grid ct-horizontal"></line><line x1="84.15507125854492" x2="84.15507125854492" y1="0" y2="119.4339599609375" class="ct-grid ct-horizontal"></line><line x1="128.31014251708984" x2="128.31014251708984" y1="0" y2="119.4339599609375" class="ct-grid ct-horizontal"></line><line x1="172.46521377563477" x2="172.46521377563477" y1="0" y2="119.4339599609375" class="ct-grid ct-horizontal"></line><line x1="216.6202850341797" x2="216.6202850341797" y1="0" y2="119.4339599609375" class="ct-grid ct-horizontal"></line><line x1="260.7753562927246" x2="260.7753562927246" y1="0" y2="119.4339599609375" class="ct-grid ct-horizontal"></line><line x1="304.93042755126953" x2="304.93042755126953" y1="0" y2="119.4339599609375" class="ct-grid ct-horizontal"></line><line x1="349.08549880981445" x2="349.08549880981445" y1="0" y2="119.4339599609375" class="ct-grid ct-horizontal"></line><line y1="119.4339599609375" y2="119.4339599609375" x1="40" x2="393.2405700683594" class="ct-grid ct-vertical"></line><line y1="95.54716796875" y2="95.54716796875" x1="40" x2="393.2405700683594" class="ct-grid ct-vertical"></line><line y1="71.6603759765625" y2="71.6603759765625" x1="40" x2="393.2405700683594" class="ct-grid ct-vertical"></line><line y1="47.773583984374994" y2="47.773583984374994" x1="40" x2="393.2405700683594" class="ct-grid ct-vertical"></line><line y1="23.886791992187497" y2="23.886791992187497" x1="40" x2="393.2405700683594" class="ct-grid ct-vertical"></line><line y1="0" y2="0" x1="40" x2="393.2405700683594" class="ct-grid ct-vertical"></line></g><g><g class="ct-series ct-series-a"><path d="M 40 91.964 C 84.155 29.858 84.155 29.858 84.155 29.858 C 128.31 65.689 128.31 65.689 128.31 65.689 C 172.465 83.604 172.465 83.604 172.465 83.604 C 216.62 85.992 216.62 85.992 216.62 85.992 C 260.775 90.77 260.775 90.77 260.775 90.77 C 304.93 95.547 304.93 95.547 304.93 95.547 C 349.085 96.742 349.085 96.742 349.085 96.742" class="ct-line"></path><line x1="40" y1="91.96414916992188" x2="40.01" y2="91.96414916992188" class="ct-point" ct:value="230" opacity="1"></line><line x1="84.15507125854492" y1="29.858489990234375" x2="84.16507125854493" y2="29.858489990234375" class="ct-point" ct:value="750" opacity="1"></line><line x1="128.31014251708984" y1="65.68867797851563" x2="128.32014251708983" y2="65.68867797851563" class="ct-point" ct:value="450" opacity="1"></line><line x1="172.46521377563477" y1="83.60377197265625" x2="172.47521377563476" y2="83.60377197265625" class="ct-point" ct:value="300" opacity="1"></line><line x1="216.6202850341797" y1="85.99245117187499" x2="216.63028503417968" y2="85.99245117187499" class="ct-point" ct:value="280" opacity="1"></line><line x1="260.7753562927246" y1="90.7698095703125" x2="260.7853562927246" y2="90.7698095703125" class="ct-point" ct:value="240" opacity="1"></line><line x1="304.93042755126953" y1="95.54716796875" x2="304.9404275512695" y2="95.54716796875" class="ct-point" ct:value="200" opacity="1"></line><line x1="349.08549880981445" y1="96.74150756835937" x2="349.09549880981444" y2="96.74150756835937" class="ct-point" ct:value="190" opacity="1"></line></g></g><g class="ct-labels"><foreignObject style="overflow: visible;" x="40" y="124.4339599609375" width="44.15507125854492" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 44px; height: 20px;">12p</span></foreignObject><foreignObject style="overflow: visible;" x="84.15507125854492" y="124.4339599609375" width="44.15507125854492" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 44px; height: 20px;">3p</span></foreignObject><foreignObject style="overflow: visible;" x="128.31014251708984" y="124.4339599609375" width="44.15507125854492" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 44px; height: 20px;">6p</span></foreignObject><foreignObject style="overflow: visible;" x="172.46521377563477" y="124.4339599609375" width="44.15507125854492" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 44px; height: 20px;">9p</span></foreignObject><foreignObject style="overflow: visible;" x="216.6202850341797" y="124.4339599609375" width="44.15507125854492" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 44px; height: 20px;">12p</span></foreignObject><foreignObject style="overflow: visible;" x="260.7753562927246" y="124.4339599609375" width="44.15507125854492" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 44px; height: 20px;">3a</span></foreignObject><foreignObject style="overflow: visible;" x="304.93042755126953" y="124.4339599609375" width="44.15507125854492" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 44px; height: 20px;">6a</span></foreignObject><foreignObject style="overflow: visible;" x="349.08549880981445" y="124.4339599609375" width="44.15507125854492" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 44px; height: 20px;">9a</span></foreignObject><foreignObject style="overflow: visible;" y="95.54716796875" x="0" height="23.8867919921875" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 24px; width: 30px;">0</span></foreignObject><foreignObject style="overflow: visible;" y="71.6603759765625" x="0" height="23.8867919921875" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 24px; width: 30px;">200</span></foreignObject><foreignObject style="overflow: visible;" y="47.773583984375" x="0" height="23.886791992187504" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 24px; width: 30px;">400</span></foreignObject><foreignObject style="overflow: visible;" y="23.886791992187497" x="0" height="23.886791992187497" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 24px; width: 30px;">600</span></foreignObject><foreignObject style="overflow: visible;" y="0" x="0" height="23.886791992187497" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 24px; width: 30px;">800</span></foreignObject><foreignObject style="overflow: visible;" y="-30" x="0" height="30" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 30px; width: 30px;">1000</span></foreignObject></g></svg></div>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">Bithday</h4>
+                <p class="card-category">{{birth1}} Student & {{birth2}} Teachers Have there Birthday Today</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% if user.is_superuser %}
+      <div class="row">
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+          <a href="/classes/">
+          <div class="card card-stats">
+            <div class="card-header card-header-warning card-header-icon">
+              <div class="card-icon">
+                <img class="imgnavb" src="{% static '/class.png' %}" alt="classes">
+              </div>
+              <p class="card-category">Classes</p>
+              <h3 class="card-title">{{class}}
+              </h3>
+            </div>
+            <div class="card-footer">
+              <div class="stats">
+                <span class="text-success">Total Classes present in school</span>
+              </div>
+            </div>
+          </div>
+          </a>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+          <a href="/student/">
+          <div class="card card-stats">
+            <div class="card-header card-header-success card-header-icon">
+              <div class="card-icon">
+                <img class="imgnavb" src="{% static '/stu.png' %}" alt="students">
+              </div>
+              <p class="card-category">Students</p>
+              <h3 class="card-title">{{studcou}}</h3>
+            </div>
+            <div class="card-footer">
+              <div class="stats text-success">
+                Total Students present in school
+              </div>
+            </div>
+          </div>
+          </a>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+          <div class="card card-stats">
+            <div class="card-header card-header-danger card-header-icon">
+              <div class="card-icon">
+                <img class="imgnavb" src="{% static '/teacher.png' %}" alt="teacher">
+              </div>
+              <p class="card-category">Teachers</p>
+              <h3 class="card-title">{{teacher}}</h3>
+            </div>
+            <div class="card-footer">
+              <div class="stats text-success">
+                Total Teachers in school
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+          <div class="card card-stats">
+            <div class="card-header card-header-info card-header-icon">
+              <div class="card-icon">
+                <img class="imgnavb" src="{% static '/build.png' %}" alt="buildings">
+              </div>
+              <p class="card-category">Blocks/Buildings</p>
+              <h3 class="card-title">{{build}}</h3>
+            </div>
+            <div class="card-footer">
+              <div class="stats text-success">
+                Total Blocks/Buildings in school
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% else %}
+      {% if birth1 > 0 %}
+        <div class="alert alert-secondary alert-link">
+          Below are the list of Students having their birthday today!
+        </div>
+        <div class="row">
+          {% for i in birth_dict %}
+          <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+            <div class="card card-stats">
+              <div class="card-header">
+                <h3 class="card-title float-center">{{i.first_name}} {{i.last_name}}
+                <p class="card-category">Adimission No: {{i.adm_no}}</p>
+                </h3>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+      {% endif %}
+      {% endif %}
+      <div class="row">
+        {% if jt != 0 %}
+        <div class="col-lg-6 col-md-12">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title">Student Stats</h4>
+              <p class="card-category">{{user.settings.exam_id.exam_name}} on {{user.settings.exam_id.exam_date}}</p>
+            </div>
+            <div class="card-body table-responsive">
+              <table class="table table-hover">
+                <thead class="text-warning">
+                  <tr><th>Position</th>
+                  <th>Name</th>
+                  <th>Marks</th>
+                  <th>Class</th>
+                </tr></thead>
+                <tbody>
+                  {% for i in di.values %}
+                  <tr>
+                    {% for j in i.values %}
+                    <td>{{j}}</td>
+                    {% endfor %}
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        <div class="col-lg-6 col-md-12">
+          <div class="card">
+            <div class="card-header card-header-tabs card-header-warning">
+              <div class="nav-tabs-navigation">
+                <div class="nav-tabs-wrapper">
+                  <span class="nav-tabs-title">Tasks:</span>
+                  <ul class="nav nav-tabs" data-tabs="tabs">
+                    <li class="nav-item">
+                      <a class="nav-link active"  data-toggle="tab">
+                        Settings
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            {% load crispy_forms_tags %}
+              <div class="container">
+                  <form method="POST">
+                      {% csrf_token %}
+                      <fieldset class="form-group">
+                          <legend class="border-bottom mb-4">Update Data</legend>
+                          {{ form|crispy }}
+                      </fieldset>
+                      <div class="form-group">
+                          <button class="btn btn-outline-info" type="submit">UPDATE</button>
+                      </div>
+                  </form>
+                  <div class="border-top pt-3">
+                      <small class="text-muted">
+                          This Setting solely belongs to you!
+                      </small>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      $(".nav").find($('li')[0]).addClass("active");
+    </script>
+{% endblock content %}

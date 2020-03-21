@@ -1,0 +1,34 @@
+{% extends "management/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<div class="col-md-8">
+    <div class="content-section">
+      <div class="media">
+        <img class="rounded-circle account-img" src="{% static '/profile.jpeg' %}">
+        <div class="media-body">
+          <h2 class="account-heading">{{ user.first_name }} {{user.last_name}} <span class="text-secondary">({{user.username  }})</span></h2>
+          <p class="text-secondary"></p>
+          <h5>Employee Id: <span class="text-secondary">{{user.profile.e_id}}</span></h5>
+          <h5>Email: <span class="text-secondary">{{user.email}}</span></h5>
+          <h5>Date Joined: <span class="text-secondary">{{user.date_joined}}</span></h5>
+          <h5>Addhar No: <span class="text-secondary">{{user.profile.addhar_no}}</span></h5>
+          <h5>Phone No: <span class="text-secondary">{{user.profile.phone_no}}</span></h5>
+          <h5>Father's Name: <span class="text-secondary">{{user.profile.fathers_name}}</span></h5>
+          <h5>Address: <span class="text-secondary">{{user.profile.addrress}}</span></h5>
+          <h5>Date Of Birth: <span class="text-secondary">{{user.profile.date_of_birth}}</span></h5>
+          <h5>Subjects: <span class="text-secondary">{{user.profile.subject}}</span></h5>
+        </div>
+      </div>
+      <div class="border-top pt-3">
+          <small class="text-muted">
+              Account at risk? <a class="ml-2" href="{% url 'change-password' %}">Change password</a>
+          </small>
+          <small class="text-muted float-right">
+              Last Login: <a class="ml-2" href="#">{{user.last_login}}</a>
+          </small>
+      </div>
+      <!-- FORM HERE -->
+    </div>
+</div>
+{% endblock content %}
